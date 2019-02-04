@@ -60,3 +60,13 @@
   background: #f44336;
   color: #fff;
 }
+
+@media (max-width: 360px) {
+  .main-header > div {
+    margin-left: 20px;
+  }
+
+  .filter-header__title {
+    margin-left: 20px;
+  }
+}

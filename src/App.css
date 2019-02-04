@@ -6,8 +6,8 @@ body {
   margin: 0px 36px;
 }
 
-.list-container__count-text {
-  font-size: 12px;
-  margin: 20px 15px;
-  color: rgba(0, 0, 0, 0.54);
+@media (max-width: 360px) {
+  .list-container {
+    margin: 0px 17px;
+  }
 }

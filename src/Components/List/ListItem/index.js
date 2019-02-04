@@ -8,12 +8,7 @@ const ListItem = props => (
       <i className="mdi mdi-plus-circle" />
     </div>
     <span className="list-item__size">Available size (12)</span>
-    <span
-      className="align-self-center list-item__faces"
-      style={{ fontSize: 31 }}
-    >
-      ( .-. )
-    </span>
+    <div className="align-self-center list-item__faces">( .-. )</div>
     <span className="list-item__price">$3500</span>
     <span className="list-item__date">3 days ago</span>
   </div>
