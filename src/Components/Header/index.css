@@ -1,0 +1,26 @@
+.main-header {
+  height: 64px;
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+  padding: 10px;
+  font-family: "Lato";
+  font-size: 22.1px;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.main-header > div {
+  margin-left: 40px;
+}
+
+.main-header__title--name {
+  font-weight: 700;
+}
+
+.main-header__title--slug {
+  font-weight: 300;
+}
+
+.main-header > i {
+  cursor: pointer;
+}
