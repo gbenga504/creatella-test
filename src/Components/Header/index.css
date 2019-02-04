@@ -1,3 +1,10 @@
+.main-header-container {
+  position: fixed;
+  width: 100%;
+  margin-bottom: 70px;
+  transition: box-shadow 200ms ease-in-out;
+}
+
 .main-header {
   height: 64px;
   background: #fff;
@@ -7,6 +14,11 @@
   font-size: 22.1px;
   width: 100%;
   color: rgba(0, 0, 0, 0.54);
+}
+
+.main-header--shadow {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.08);
 }
 
 .main-header > div {
