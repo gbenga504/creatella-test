@@ -1,0 +1,31 @@
+.notification-banner {
+  height: 48px;
+  width: 288px;
+  padding: 0 18px;
+  position: absolute;
+  bottom: -60px;
+  right: 20px;
+  background-color: #323232;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: bottom 1s;
+}
+
+.notification-banner--show {
+  bottom: 20px;
+}
+
+.notification-banner__title {
+  font-weight: 700;
+  color: #fff;
+  font-size: 14px;
+}
+
+.notification-banner > i {
+  color: #f44336;
+  font-size: 18px;
+}
+
+.notification-banner__undo-text {
+  color: #f44336;
+  font-size: 13px;
+}
