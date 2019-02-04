@@ -2,7 +2,7 @@
   height: 48px;
   width: 288px;
   padding: 0 18px;
-  position: absolute;
+  position: fixed;
   bottom: -60px;
   right: 20px;
   background-color: #323232;
