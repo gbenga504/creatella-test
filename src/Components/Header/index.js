@@ -1,6 +1,8 @@
 import React from "react";
 import "./index.css";
 
+import Filter from "./Filter";
+
 const Header = props => (
   <div className="row">
     <div className="d-flex main-header justify-content-between align-items-center">
@@ -8,8 +10,8 @@ const Header = props => (
         <span className="main-header__title--name">Creatella</span>
         <span className="main-header__title--slug">&nbsp;Faces</span>
       </div>
-      <i className="mdi mdi-filter" />
     </div>
+    <Filter />
   </div>
 );
 
