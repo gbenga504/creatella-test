@@ -1,4 +1,4 @@
-import * as Types from "./types";
+import * as Types from "../types";
 
 export const addFacesToCart = id => ({
   type: Types.ADD_TO_CART,
