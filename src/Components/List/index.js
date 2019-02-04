@@ -1,9 +1,14 @@
 import React from "react";
 import "./index.css";
+import { connect } from "react-redux";
 
 import ListItem from "./ListItem";
 
-export default class List extends React.PureComponent {
+class List extends React.PureComponent {
+  componentDidUpdate() {
+    console.log(this.props.products);
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -20,3 +25,11 @@ export default class List extends React.PureComponent {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    products: state.products
+  };
+}
+
+export default connect(mapStateToProps)(List);
