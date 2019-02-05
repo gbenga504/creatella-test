@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 
+import { getDate } from "../../../utils";
+
 const ListItem = props => (
   <div className="d-flex flex-column list-item">
     <div className="d-flex justify-content-between align-items-center">
@@ -16,7 +18,7 @@ const ListItem = props => (
       {props.face}
     </div>
     <span className="list-item__price">${(props.price / 100).toFixed(2)}</span>
-    <span className="list-item__date">3 days ago</span>
+    <span className="list-item__date">{getDate(props.date)}</span>
   </div>
 );
 
