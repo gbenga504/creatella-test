@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./index.css";
 
+import { api } from "../../../Services/Endpoints";
 import { getDate } from "../../../utils";
 import {
   addFacesToCart,
@@ -18,7 +19,63 @@ function showNotificationBanner(type) {
   banner.show();
 }
 
-const ListItem = props => (
+class AdvertListItem extends React.PureComponent {
+  state = {
+    loading: true,
+    error: null
+  };
+
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    sponsorsText: PropTypes.string.isRequired,
+    generatedImageRef: PropTypes.number.isRequired
+  };
+
+  render() {
+    return (
+      <div className="d-flex flex-column list-item advert-list-item">
+        <h1 className="list-item__advert-title">{this.props.title}</h1>
+        <p className="list-item__advert-description">
+          {this.props.description}
+        </p>
+        <p className="list-item__advert-description">
+          {this.props.sponsorsText}
+        </p>
+        {this.state.loading && (
+          <div
+            className="d-flex align-items-center justify-content-center"
+            style={{ height: 200 }}
+          >
+            <span className="list-item__animated-loading list-item__loading">
+              Loading...
+            </span>
+          </div>
+        )}
+        {this.state.error && (
+          <div
+            className="d-flex align-items-center justify-content-center"
+            style={{ height: 179 }}
+          >
+            <span className="list-item__loading">{this.state.error}</span>
+          </div>
+        )}
+        <img
+          alt="advert"
+          onLoadStart={() => this.setState({ loading: true, error: null })}
+          onLoad={() => this.setState({ loading: false, error: null })}
+          onError={() =>
+            this.setState({ loading: false, error: "FAILED TO LOAD" })
+          }
+          className="ad"
+          src={`${api.imageBaseURL}${this.props.generatedImageRef}`}
+        />
+      </div>
+    );
+  }
+}
+
+const _ListItem = props => (
   <div className="d-flex flex-column list-item">
     <div className="d-flex justify-content-between align-items-center">
       <span className="list-item__title">{props.id}</span>
@@ -52,7 +109,7 @@ const ListItem = props => (
   </div>
 );
 
-ListItem.propTypes = {
+_ListItem.propTypes = {
   id: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
@@ -77,7 +134,9 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
+const ListItem = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListItem);
+)(_ListItem);
+
+export { ListItem, AdvertListItem };

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./index.css";
 import { connect } from "react-redux";
 
-import ListItem from "./ListItem";
+import { ListItem, AdvertListItem } from "./ListItem";
 
 class List extends React.PureComponent {
   static propTypes = {
@@ -28,16 +28,26 @@ class List extends React.PureComponent {
           Viewing {data.length} faces
         </span>
         <div className="d-flex flex-wrap">
-          {data.map((product, i) => (
-            <ListItem
-              key={i}
-              id={product.id}
-              size={product.size}
-              price={product.price}
-              face={product.face}
-              date={product.date}
-            />
-          ))}
+          {data.map((product, i) =>
+            product.isAdvert ? (
+              <AdvertListItem
+                key={i}
+                title={product.title}
+                description={product.description}
+                sponsorsText={product.sponsorsText}
+                generatedImageRef={product.generatedImageRef}
+              />
+            ) : (
+              <ListItem
+                key={i}
+                id={product.id}
+                size={product.size}
+                price={product.price}
+                face={product.face}
+                date={product.date}
+              />
+            )
+          )}
         </div>
         {fetchingMore && (
           <span className="list-container__footer-text list-container__animated-loading">
