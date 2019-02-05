@@ -16,6 +16,21 @@ class HomeScreen extends React.PureComponent {
     this.props.fetchProducts({ _page: 0, _limit: 9 });
   }
 
+  componentDidUpdate(prevProps) {
+    let {
+        products: { data: newData }
+      } = this.props,
+      {
+        products: { data: prevData }
+      } = prevProps;
+
+    if (newData.length > prevData.length && newData !== prevData.length) {
+      this.setState({
+        _page: this.state._page + 1
+      });
+    }
+  }
+
   filterProducts = _sort => {
     this.setState(
       {
@@ -28,12 +43,23 @@ class HomeScreen extends React.PureComponent {
     );
   };
 
+  fetchMoreProducts = () => {
+    let {
+      products: { hasEndBeenReached, fetchingMore }
+    } = this.props;
+
+    if (!hasEndBeenReached && !fetchingMore) {
+      let { _page, _sort } = this.state;
+      this.props.fetchProducts({ _page: _page + 1, _sort, _limit: 9 }, true);
+    }
+  };
+
   render() {
     return (
       <div className="container-fluid">
         <Header onSelectFilter={this.filterProducts} />
         <div className="d-flex flex-column list-container">
-          <List />
+          <List onFetchMore={this.fetchMoreProducts} />
         </div>
       </div>
     );
@@ -42,13 +68,13 @@ class HomeScreen extends React.PureComponent {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchProducts: params => {
-      dispatch(fetchProducts(params));
+    fetchProducts: (params, isFetchRequest) => {
+      return dispatch(fetchProducts(params, isFetchRequest));
     }
   };
 }
 
 export default connect(
-  () => ({}),
+  state => ({ products: state.products }),
   mapDispatchToProps
 )(HomeScreen);

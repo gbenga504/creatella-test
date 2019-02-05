@@ -9,32 +9,9 @@ export default class Header extends React.PureComponent {
     onSelectFilter: PropTypes.func.isRequired
   };
 
-  state = {
-    boxShadow: false
-  };
-
-  componentDidMount() {
-    document.body.onscroll = () => {
-      if (window.pageYOffset >= 70) {
-        this.setState({
-          boxShadow: true
-        });
-      } else {
-        this.setState({
-          boxShadow: false
-        });
-      }
-    };
-  }
-
   render() {
-    let { boxShadow } = this.state;
-
     return (
-      <div
-        className={`row main-header-container ${boxShadow &&
-          "main-header--shadow"}`}
-      >
+      <div className={`row main-header-container`}>
         <div
           className={`d-flex main-header justify-content-between align-items-center`}
         >

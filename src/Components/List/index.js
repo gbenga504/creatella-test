@@ -1,16 +1,34 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./index.css";
 import { connect } from "react-redux";
 
 import ListItem from "./ListItem";
 
 class List extends React.PureComponent {
+  static propTypes = {
+    onFetchMore: PropTypes.func.isRequired
+  };
+
+  componentDidMount() {
+    document.body.onscroll = () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        this.props.onFetchMore();
+      }
+    };
+  }
+
   render() {
+    let {
+      products: { data, fetchingMore, hasEndBeenReached }
+    } = this.props;
     return (
       <React.Fragment>
-        <span className="list-container__title">Viewing 5 faces</span>
+        <span className="list-container__title">
+          Viewing {data.length} faces
+        </span>
         <div className="d-flex flex-wrap">
-          {this.props.products.data.map((product, i) => (
+          {data.map((product, i) => (
             <ListItem
               key={i}
               id={product.id}
@@ -21,6 +39,16 @@ class List extends React.PureComponent {
             />
           ))}
         </div>
+        {fetchingMore && (
+          <span className="list-container__footer-text list-container__animated-loading">
+            Loading...
+          </span>
+        )}
+        {hasEndBeenReached && (
+          <span className="list-container__footer-text">
+            ~ end of catalogue ~
+          </span>
+        )}
       </React.Fragment>
     );
   }
