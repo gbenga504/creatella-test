@@ -4,7 +4,7 @@ import "./index.css";
 
 export default class Filter extends React.PureComponent {
   static propTypes = {
-    onSetActiveFilter: PropTypes.func
+    onSetActiveFilter: PropTypes.func.isRequired
   };
 
   state = {
@@ -12,9 +12,12 @@ export default class Filter extends React.PureComponent {
   };
 
   setActiveFilter = value => {
-    this.setState({
-      filterBy: value
-    });
+    this.setState(
+      {
+        filterBy: value
+      },
+      () => this.props.onSetActiveFilter(value.toLowerCase())
+    );
   };
 
   render() {

@@ -1,9 +1,11 @@
 import React from "react";
 import "./index.css";
+import { connect } from "react-redux";
 
 import Filter from "./Filter";
+import { fetchProducts } from "../../Store/actions/products";
 
-export default class Header extends React.PureComponent {
+class Header extends React.PureComponent {
   state = {
     boxShadow: false
   };
@@ -38,8 +40,25 @@ export default class Header extends React.PureComponent {
             <span className="main-header__title--slug">&nbsp;Faces</span>
           </div>
         </div>
-        <Filter />
+        <Filter
+          onSetActiveFilter={_sort => {
+            this.props.fetchByFilter({ _page: 0, _sort, _limit: 9 });
+          }}
+        />
       </div>
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchByFilter: params => {
+      dispatch(fetchProducts(params));
+    }
+  };
+}
+
+export default connect(
+  () => ({}),
+  mapDispatchToProps
+)(Header);
