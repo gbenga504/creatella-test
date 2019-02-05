@@ -13,7 +13,8 @@ class HomeScreen extends React.PureComponent {
   };
 
   componentDidMount() {
-    this.props.fetchProducts({ _page: 1, _limit: 9 });
+    let { _sort } = this.state;
+    this.props.fetchProducts({ _page: 1, _sort, _limit: 9 });
   }
 
   componentDidUpdate(prevProps) {

@@ -1,17 +1,5 @@
 import * as endpoints from "./Endpoints";
-
-function getQueryParams(params) {
-  let queryParams = "",
-    keysOfParams = Object.keys(params || {});
-
-  keysOfParams.forEach((key, i) => {
-    let appender = i === keysOfParams.length - 1 ? "" : "&";
-    queryParams += `${key}=${params[key]}${appender}`;
-  });
-
-  let _queryParams = queryParams.length === 0 ? "" : `?${queryParams}`;
-  return _queryParams;
-}
+import { getQueryParams } from "../utils";
 
 const API = ({ config, params }) => {
   let _config = config || {},

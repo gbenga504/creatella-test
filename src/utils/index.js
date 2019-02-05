@@ -30,3 +30,16 @@ export const getDate = date => {
     return `${Math.floor(time)} days ago`;
   }
 };
+
+export const getQueryParams = params => {
+  let queryParams = "",
+    keysOfParams = Object.keys(params || {});
+
+  keysOfParams.forEach((key, i) => {
+    let appender = i === keysOfParams.length - 1 ? "" : "&";
+    queryParams += `${key}=${params[key]}${appender}`;
+  });
+
+  let _queryParams = queryParams.length === 0 ? "" : `?${queryParams}`;
+  return _queryParams;
+};
