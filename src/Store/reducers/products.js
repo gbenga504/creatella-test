@@ -21,7 +21,7 @@ function insertAdvert(state, action, isInitialFetch) {
   let data = isInitialFetch
       ? action.payload
       : [...state.data, ...action.payload],
-    advertTargetIndex = state.advertTargetIndex;
+    advertTargetIndex = isInitialFetch ? 20 : state.advertTargetIndex;
 
   if (data.length >= state.advertTargetIndex) {
     data = [
