@@ -7,7 +7,8 @@ class DefaultNotificationView extends React.PureComponent {
   state = {
     visible: false,
     currentVisibleProperties: {
-      title: ""
+      title: "",
+      type: ""
     }
   };
 
@@ -36,7 +37,7 @@ class DefaultNotificationView extends React.PureComponent {
         {
           visible: false
         },
-        () => setTimeout(this.makeNotificationModalVisible, 3000)
+        () => setTimeout(this.makeNotificationModalVisible, 1000)
       );
     } else {
       this.makeNotificationModalVisible();
@@ -44,12 +45,13 @@ class DefaultNotificationView extends React.PureComponent {
   };
 
   makeNotificationModalVisible = () => {
-    let { duration, title } = this.props;
+    let { duration, title, type } = this.props;
     this.setState(
       {
         visible: true,
         currentVisibleProperties: {
-          title
+          title,
+          type
         }
       },
       () => {
@@ -66,11 +68,10 @@ class DefaultNotificationView extends React.PureComponent {
   };
 
   render() {
-    let { type } = this.props,
-      {
-        visible,
-        currentVisibleProperties: { title }
-      } = this.state;
+    let {
+      visible,
+      currentVisibleProperties: { title, type }
+    } = this.state;
 
     return (
       <div
