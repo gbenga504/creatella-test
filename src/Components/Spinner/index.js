@@ -12,7 +12,7 @@ class Spinner extends React.PureComponent {
       products: { loading }
     } = this.props;
     if (loading) {
-      this.timer = setTimeout(() => this.setState({ visible: true }), 3000);
+      this.timer = setTimeout(() => this.setState({ visible: true }), 1000);
     } else if (prevProps.products.loading && loading === false) {
       clearTimeout(this.timer);
       this.setState({ visible: false });
