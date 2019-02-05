@@ -8,12 +8,12 @@ import { fetchProducts } from "../../Store/actions/products";
 
 class HomeScreen extends React.PureComponent {
   state = {
-    _page: 0,
+    _page: 1,
     _sort: "none"
   };
 
   componentDidMount() {
-    this.props.fetchProducts({ _page: 0, _limit: 9 });
+    this.props.fetchProducts({ _page: 1, _limit: 9 });
   }
 
   componentDidUpdate(prevProps) {
@@ -34,11 +34,11 @@ class HomeScreen extends React.PureComponent {
   filterProducts = _sort => {
     this.setState(
       {
-        _page: 0,
+        _page: 2,
         _sort
       },
       () => {
-        this.props.fetchProducts({ _page: 0, _sort, _limit: 9 });
+        this.props.fetchProducts({ _page: 1, _sort, _limit: 9 });
       }
     );
   };
@@ -50,7 +50,7 @@ class HomeScreen extends React.PureComponent {
 
     if (!hasEndBeenReached && !fetchingMore) {
       let { _page, _sort } = this.state;
-      this.props.fetchProducts({ _page: _page + 1, _sort, _limit: 9 }, true);
+      this.props.fetchProducts({ _page, _sort, _limit: 9 }, true);
     }
   };
 
