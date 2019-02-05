@@ -1,4 +1,6 @@
-import Root from './Root'
-import { NotificationBanner } from './NotificationBanner'
+import { NotificationBanner } from "./NotificationBanner";
+import Store from "./Store";
 
-export { Root, NotificationBanner }
+export const _Store = new Store({});
+
+export { NotificationBanner };

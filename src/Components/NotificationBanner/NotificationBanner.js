@@ -1,4 +1,4 @@
-import { _Store } from "./Root";
+import { _Store } from "./index";
 
 function NotificationBanner({ title, type }) {
   return new NotificationBannerContext({

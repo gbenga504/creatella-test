@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 import "./App.css";
 import { appReducers } from "./Store/reducers";
 
-import { Root } from "./Components/NotificationBanner";
+import Root from "./Components/Root";
 import HomeScreen from "./Views/HomeScreen";
 
 const store = createStore(appReducers, applyMiddleware(thunk));

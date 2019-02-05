@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-import { _Store } from "../Root";
+import { _Store } from "../index";
 
 class DefaultNotificationView extends React.PureComponent {
   state = {
