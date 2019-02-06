@@ -1,3 +1,8 @@
+/**
+ * This function deep clones an object values...
+ * n:b -> The values used in this object are simple primitive values so this works
+ * @param {object} aObject
+ */
 function deepClone(aObject) {
   if (!aObject) {
     return aObject;
@@ -13,6 +18,13 @@ function deepClone(aObject) {
   return bObject;
 }
 
+/**
+ * This is a simple Store built to model the redux update pattern using subscribe, unsubscribe and dispatch
+ * We use a simple custom store as opposed to the React context API based on our use case
+ * The use of this store makes it quite easy to ship this NotificationBanner component as a library on its own
+ * import it on story book or even use it for multiple projects without the projects knowing the existence
+ * of a context
+ */
 class Store {
   callbacks = [];
 

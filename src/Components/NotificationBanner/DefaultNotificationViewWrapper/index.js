@@ -3,6 +3,11 @@ import "./index.css";
 
 import { _Store } from "../index";
 
+/**
+ * This file contains the component that actually builds the notificatin view
+ * We listen to the local store and unsubscribe from the store when the component is unmounted
+ */
+
 class DefaultNotificationView extends React.PureComponent {
   state = {
     visible: false,

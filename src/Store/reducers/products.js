@@ -1,4 +1,5 @@
 import * as Types from "../types";
+import { insertAdvert } from "../../utils";
 
 const initialState = {
   loading: false,
@@ -8,32 +9,6 @@ const initialState = {
   hasEndBeenReached: false,
   advertTargetIndex: 20
 };
-
-const advert = {
-  title: "Products Grid",
-  isAdvert: true,
-  description:
-    "Here you're sure to find a bargain on some of the finest ascii available to purchase. Be sure to peruse our selection of ascii faces in an exciting range of sizes and prices.",
-  sponsorsText: "But first, a word from our sponsors:"
-};
-
-function insertAdvert(state, action, isInitialFetch) {
-  let data = isInitialFetch
-      ? action.payload
-      : [...state.data, ...action.payload],
-    advertTargetIndex = isInitialFetch ? 20 : state.advertTargetIndex;
-
-  if (data.length >= state.advertTargetIndex) {
-    data = [
-      ...data.slice(0, state.advertTargetIndex),
-      { ...advert, generatedImageRef: Math.floor(Math.random() * 1000) },
-      ...data.slice(state.advertTargetIndex)
-    ];
-    advertTargetIndex = state.advertTargetIndex + 20;
-  }
-
-  return { data, advertTargetIndex };
-}
 
 export const products = (state = initialState, action) => {
   switch (action.type) {

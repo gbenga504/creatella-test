@@ -2,6 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import "./index.css";
 
+/**
+ * This component is the spinnner displayed when a fresh query or sort is selected
+ * A small timeout is set as a delay for the Spinner before the actual content is loaded
+ * so that a flicker is not seen on screen... This is necessary so as to prevent glitches in the UI
+ */
 class Spinner extends React.PureComponent {
   state = {
     visible: false

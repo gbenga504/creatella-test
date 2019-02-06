@@ -11,6 +11,10 @@ import {
 } from "../../../Store/actions/cart";
 import { NotificationBanner } from "../../NotificationBanner";
 
+/**
+ * This function composes the NotificationBanner function
+ * @param {enum : "addition" | "removal"} type
+ */
 function showNotificationBanner(type) {
   let title =
       type === "addition" ? "Faces added to cart" : "Faces removed from cart",
@@ -19,6 +23,11 @@ function showNotificationBanner(type) {
   banner.show();
 }
 
+/**
+ * This is the AdvertListItem component
+ * created as a stateful component because of the need to show information
+ * for the download progress of the sponsor images
+ */
 class AdvertListItem extends React.PureComponent {
   state = {
     loading: true,
@@ -75,6 +84,9 @@ class AdvertListItem extends React.PureComponent {
   }
 }
 
+/**
+ * This is the default ListItem component
+ */
 const _ListItem = props => (
   <div className="d-flex flex-column list-item">
     <div className="d-flex justify-content-between align-items-center">

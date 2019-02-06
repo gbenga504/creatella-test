@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 
 import { ListItem, AdvertListItem } from "./ListItem";
 
+/**
+ * This is the List view of the application
+ */
 class List extends React.PureComponent {
   static propTypes = {
     onFetchMore: PropTypes.func.isRequired
@@ -20,12 +23,16 @@ class List extends React.PureComponent {
 
   render() {
     let {
-      products: { data, fetchingMore, hasEndBeenReached }
+      products: { data, fetchingMore, hasEndBeenReached, advertTargetIndex }
     } = this.props;
     return (
       <React.Fragment>
         <span className="list-container__title">
-          Viewing {data.length} faces
+          Viewing{" "}
+          {data.length >= 21
+            ? data.length - advertTargetIndex / 20 + 1
+            : data.length}{" "}
+          faces
         </span>
         <div className="d-flex flex-wrap">
           {data.map((product, i) =>

@@ -6,6 +6,11 @@ import Header from "../../Components/Header";
 import List from "../../Components/List";
 import { fetchProducts } from "../../Store/actions/products";
 
+/**
+ * @Component - HomeScreen is the main product listing page
+ * This Component houses 2 states, i.e _page and _sort which keeps count of the page and sort respectively
+ * These states were lifted here since they are ties to both the Header and the List components
+ */
 class HomeScreen extends React.PureComponent {
   state = {
     _page: 1,
@@ -25,6 +30,7 @@ class HomeScreen extends React.PureComponent {
         products: { data: prevData }
       } = prevProps;
 
+    //This updates the page number if a fetch more query is successful i.e new data length > old data length
     if (newData.length > prevData.length && newData !== prevData.length) {
       this.setState({
         _page: this.state._page + 1
@@ -32,6 +38,11 @@ class HomeScreen extends React.PureComponent {
     }
   }
 
+  /**
+   * This function runs a filter product fetch query
+   * It also resets the page number and sort paramater after a filter has been selected
+   * @param {number} _sort
+   */
   filterProducts = _sort => {
     this.setState(
       {
@@ -44,6 +55,9 @@ class HomeScreen extends React.PureComponent {
     );
   };
 
+  /**
+   * This function runs when a fetch more query is triggered
+   */
   fetchMoreProducts = () => {
     let {
       products: { hasEndBeenReached, fetchingMore }

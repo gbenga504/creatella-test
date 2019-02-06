@@ -1,6 +1,12 @@
 import * as endpoints from "./Endpoints";
 import { getQueryParams } from "../utils";
 
+/**
+ * This function composes and returns a fetch promise
+ *
+ * @returns {Promise}
+ * @param {object, object} param0
+ */
 const API = ({ config, params }) => {
   let _config = config || {},
     header = {

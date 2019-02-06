@@ -5,6 +5,9 @@ import "./index.css";
 
 import Filter from "./Filter";
 
+/**
+ * This is the header of the application with the cart count 
+ */
 class Header extends React.PureComponent {
   static propTypes = {
     onSelectFilter: PropTypes.func.isRequired

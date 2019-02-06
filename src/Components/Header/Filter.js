@@ -2,6 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 
+/**
+ * This handles the filtering of the products
+ */
 export default class Filter extends React.PureComponent {
   static propTypes = {
     onSetActiveFilter: PropTypes.func.isRequired
