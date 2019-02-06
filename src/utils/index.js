@@ -95,9 +95,14 @@ export const insertAdvert = (state, action, isInitialFetch) => {
 
   if (data.length >= state.advertTargetIndex) {
     data = [
-      ...data.slice(0, state.advertTargetIndex),
+      ...data.slice(
+        0,
+        state.advertTargetIndex + (state.advertTargetIndex / 20 - 1)
+      ),
       { ...advert, generatedImageRef: Math.floor(Math.random() * 1000) },
-      ...data.slice(state.advertTargetIndex)
+      ...data.slice(
+        state.advertTargetIndex + (state.advertTargetIndex / 20 - 1)
+      )
     ];
     advertTargetIndex = state.advertTargetIndex + 20;
   }
