@@ -1,4 +1,4 @@
-# [Creatella Faces]
+# Creatella Faces
 
 This is an ecommerce site, where you can buy all sorts of ascii faces like `(ノ・∀・)ノ` and `¯_(ツ)_/¯`, in a wide variety of font sizes. The homepage should display a list of products for people to browse.
 
@@ -8,9 +8,9 @@ This is an ecommerce site, where you can buy all sorts of ascii faces like `(ノ
 
 This application is prepackaged with the server and the client code residing in different folders. Follow the process below to run the application
 
-- Run: \$ npm install
-- Run: \$ npm run start:server
-- Run: \$ npm run start:react-app
+- Run: `$ npm install`
+- Run: `$ npm run start:server`
+- Run: `$ npm run start:react-app`
 
 The above commands start the server and react app
 
