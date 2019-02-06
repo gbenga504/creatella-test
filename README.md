@@ -46,5 +46,3 @@ were extra features added to this system not explicitly stated. This were added 
 Also some decisions were taken based the general use of the app. For instance, Redux was added even if this is a small library because I wanted to decouple the query data management from the UI component itself. Also a NotificationBanner component was designed without the Redux or context API because components like this is fit for use in other several project as a Plug-and-play.
 
 Necessary comments on how germane features were implemented have been added to the code...
-
-### Thank you.
