@@ -13,7 +13,7 @@ This application is prepackaged with the server and the client code residing in 
 - Run: `$ npm run start:server`
 - Run: `$ npm run start:react-app`
 
-The above commands start the server and react app
+The react app should open in port 3001 or any other port available since the server runs on 3000, but it would state this explicitly. The above commands start the server and react app
 
 ---
 
